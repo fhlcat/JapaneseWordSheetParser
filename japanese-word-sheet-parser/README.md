@@ -1,42 +1,45 @@
-# sv
+# Japanese Word Sheet Parser
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A web app that extracts Japanese words from a PDF or image using the Gemini API. Upload a Japanese word sheet, and the app will parse every word with its reading, meaning, and part of speech.
 
-## Creating a project
+Built with Svelte 5, SvelteKit, TypeScript, and Material Web Components. Deployed on Cloudflare Pages.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
+## Setup
 
 ```sh
-# recreate this project
-npx sv@0.15.3 create --template minimal --types ts --add prettier eslint --install npm japanese-word-sheet-parser
+npm install
 ```
+
+Get a Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey). You'll enter it in the app on first visit — it's stored only in your browser.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
 ```sh
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
 ## Building
-
-To create a production version of your app:
 
 ```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+The output lands in `.svelte-kit/cloudflare/`, ready to deploy via `wrangler pages deploy` or by connecting your repo to the Cloudflare Pages dashboard.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Usage
+
+1. Enter your Gemini API key (stored in browser localStorage).
+2. Upload a PDF or image containing a Japanese word sheet.
+3. Click **Extract Words** to send the file to Gemini.
+4. Review the extracted words in the preview table.
+5. Click **Open Full Results Page** to view a printable, self-contained results page.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | SvelteKit 2 (Svelte 5 runes) |
+| Language | TypeScript |
+| UI | Material Web Components |
+| API | Gemini 2.5 Flash |
+| Hosting | Cloudflare Pages |
